@@ -166,6 +166,28 @@ section{padding:clamp(3.4rem,8.5vh,6rem) 0}
 .exhibit svg.dg{width:100%;min-width:640px;height:auto;display:block;overflow:visible}
 .exhibit figcaption{padding:.7rem 1.1rem .9rem;font-family:var(--mono);font-size:.74rem;line-height:1.6;color:var(--mute)}
 
+/* exhibit mobile fallback - avoids horizontal scroll on narrow screens */
+.exhibit-mobile{display:none}
+@media(max-width:720px){
+  .svg-scroll{display:none}
+  .exhibit-mobile{display:block;padding:1.1rem 1.1rem 1.3rem}
+}
+.dgm-flow{display:flex;flex-direction:column;gap:.5rem}
+.dgm-group{display:flex;flex-direction:column;gap:.5rem}
+.dgm-node{border:1px solid var(--rule);background:var(--paper);padding:.55rem .75rem;font-family:var(--mono);font-size:.82rem;color:var(--ink-soft)}
+.dgm-node.out{border-color:var(--ink);color:var(--ink);font-weight:700}
+.dgm-node.rare{border-color:var(--red);border-style:dashed;color:var(--red)}
+.dgm-arrow{align-self:center;color:var(--mute);font-size:1.15rem;line-height:1}
+.dgm-stamp{align-self:center;border:2px solid var(--red);color:var(--red);font-family:var(--mono);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem;padding:.5rem 1.1rem;transform:rotate(-3deg)}
+.dgm-scrawl{font-family:var(--hand);color:var(--red);font-size:1.1rem;text-align:right;margin:.6rem 0 0}
+.mxm-tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:0 0 .5rem}
+.mxm-tag.hot{color:var(--red)}
+.mxm-tag:not(:first-child){margin-top:1.1rem}
+.mxm-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.45rem}
+.mxm-list li{border:1px solid var(--rule);padding:.55rem .75rem;font-family:var(--mono);font-size:.82rem;color:var(--ink-soft)}
+.mxm-list.hot li{border-color:var(--red);border-width:2px;color:var(--ink)}
+.mxm-list.skip li{border-style:dashed;color:var(--mute);text-decoration:line-through;text-decoration-color:var(--red)}
+
 /* exhibit B - priority matrix */
 .mx-grid{stroke:#DFDBCD;stroke-width:1}
 .mx-mid{stroke:#C9C4B2;stroke-width:1;stroke-dasharray:4 5}
@@ -423,6 +445,26 @@ footer{border-top:2px solid var(--rule-heavy);padding:2.2rem 0 3rem}
         <text class="dg-scrawl" text-anchor="end" x="786" y="318">&#8592; only the exceptions</text>
       </svg>
       </div>
+      <div class="exhibit-mobile">
+        <div class="dgm-flow">
+          <div class="dgm-group">
+            <div class="dgm-node">Instagram DMs</div>
+            <div class="dgm-node">Email</div>
+            <div class="dgm-node">Phone / voicemail</div>
+            <div class="dgm-node">Web form</div>
+            <div class="dgm-node">Text messages</div>
+          </div>
+          <div class="dgm-arrow">&#8595;</div>
+          <div class="dgm-stamp">Triage Agent</div>
+          <div class="dgm-arrow">&#8595;</div>
+          <div class="dgm-group">
+            <div class="dgm-node out">Answered instantly</div>
+            <div class="dgm-node out">Booked on the calendar</div>
+            <div class="dgm-node out rare">Escalated to you</div>
+          </div>
+        </div>
+        <p class="dgm-scrawl">&#8592; only the exceptions</p>
+      </div>
     </figure>
   </div>
 </section>
@@ -492,6 +534,23 @@ footer{border-top:2px solid var(--rule-heavy);padding:2.2rem 0 3rem}
         <text class="mx-scrawl" x="150" y="242">start here</text>
         <g class="mx-x" style="animation-delay:2s"><path d="M242 232 C258 226 264 214 266 198 M266 198 L256 208 M266 198 L272 210" fill="none" stroke="#C5271C" stroke-width="2.2" stroke-linecap="round"/></g>
       </svg>
+      </div>
+      <div class="exhibit-mobile">
+        <p class="mxm-tag hot">High impact, low effort &mdash; start here</p>
+        <ul class="mxm-list hot">
+          <li>Repeat questions</li>
+          <li>Lead follow-up</li>
+          <li>Booking &amp; intake</li>
+        </ul>
+        <p class="mxm-tag">Worth doing, not urgent</p>
+        <ul class="mxm-list">
+          <li>Data entry between tools</li>
+          <li>Weekly reporting</li>
+        </ul>
+        <p class="mxm-tag">High effort &mdash; not yet</p>
+        <ul class="mxm-list skip">
+          <li>&ldquo;Rebuild the whole CRM&rdquo;</li>
+        </ul>
       </div>
     </figure>
   </div>
